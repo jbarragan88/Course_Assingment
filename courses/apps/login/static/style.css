@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    /*border: solid black 1px;*/
+}
+body {
+    width: 890px;
+    margin: 0 auto;
+}
+h1 {
+    display: inline-block;
+}
+h2 {
+    display: inline-block;
+}
+ #register, #login {
+    width: 440px;
+    display: inline-block;
+}
+#login {
+    vertical-align: top;
+}
+#register h2, #login h2 {
+    display: inline;
+    margin: 0 0 0 150px;
+}
+#register h2 {
+    display: inline;
+    margin: 0 0 0 50px;
+}

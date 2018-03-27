@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Course || Edit</title>
+    </head>
+    <body>
+        <h2>Edit Course</h2>
+        <h3>{{ course.course_name }}</h3>
+        <form action="/{{ user.id }}/{{ course.id }}/updating" method="post">
+            {% csrf_token %}
+            Course Name:
+            <br>
+            <input type="text" name="course_name" id="course_name" value={{ course.course_name }}>
+            <br>
+            Description:
+            <br>
+            <textarea name="description" id="description">{{ course.description.description }}</textarea>
+            <br>
+            <input type="submit" value="Update">
+        </form>
+    </body>
+</html>

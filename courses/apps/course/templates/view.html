@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Courses| Course</title>
+    </head>
+    <body>
+        <!-- Lists all the  for the specific course according to the course_id passed in by link-->
+        <h2>{{ course.course_name }}</h2>
+        <ul>
+            <li>{{ course.description.description }}</li>
+            <li>{{ course.creator.first_name}} {{ course.creator.last_name}}</li>
+            <li>{{ course.created_at}}</li>
+            <li>{{ course.updated_at}}</li>
+        <a href="/{{ user.id }}/{{ course.id}}/update">Edit</a> ||
+        <a href="">Delete</a>
+        </ul>
+        
+        <a href="/{{ user.id }}/add">Create Course</a>
+        <a href="/{{ user.id }}">Home</a>
+        <a href="/{{ user.id }}/courses">View Courses</a>
+        <h3>Likes</h3>
+        <!-- goes through every like this specific course has from the context key named course-->
+        {% for likes in course.likers.all %}
+            <p>{{ likes.first_name }}</p>
+        {% endfor %}
+
+    </body>
+</html>

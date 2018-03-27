@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Courses| Courses</title>
+    </head>
+    <body>
+        <h2>Courses</h2>
+        <a href="/{{ user.id }}/add">Create Course</a>
+        <a href="/{{ user.id }}">Home</a>
+        <h3>Courses</h3>
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Description</th>
+                <th>Creator</th>
+                <th>Actions</th>
+            </tr>
+            {% for course in all_courses %}
+            <tr>
+                <td><a href="/{{ user.id }}/{{ course.id }}/view">{{ course.course_name }}</a></td>
+                <td>{{ course.description.description }}|</td>
+                <td>|{{ course.creator.first_name }} {{ course.creator.last_name }}</td>
+                <td>
+                    <a href="/{{ user.id }}/{{ course.id }}/view">Show</a>
+                    <a href="/{{ user.id }}/{{ course.id}}/update">Edit</a>
+                    {% if course in user.liked_courses.all %}
+                    <a href="/{{ user.id }}/{{ course.id}}/unlike">Unlike</a>
+                    {% else %}
+                    <a href="/{{ user.id }}/{{ course.id}}/like">Like</a>
+                    {% endif %}
+                    {% if course in user.created_courses.all %}
+                    <a href="/{{ user.id }}/{{ course.id}}/delete">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h3>Liked Courses</h3>
+        <table>
+                <tr>
+                    <th>Course</th>
+                    <th>Description</th>
+                    <th>Creator</th>
+                    <th>Actions</th>
+                </tr>
+                {% for likes in user.liked_courses.all %}
+                <tr>
+                    <td><a href="/{{ user.id }}/{{ likes.id }}/view">{{ likes.course_name }}</a></td>
+                    <td>{{ likes.description.description }}|</td>
+                    <td>|{{ likes.creator.first_name }} {{ likes.creator.last_name }}</td>
+                    <td>
+                        <a href="/{{ user.id }}/{{ likes.id }}/view">Show</a>
+                        <a href="/{{ user.id }}/{{ likes.id}}/update">Edit</a>
+                        <a href="/{{ user.id }}/{{ likes.id}}/unlike">Unlike</a>
+                        <a href="">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+</html>

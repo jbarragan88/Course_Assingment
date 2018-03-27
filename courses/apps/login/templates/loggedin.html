@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Nada</title>
+    </head>
+    <body>
+        <h1>Nothing</h1>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <h2>Welcome {{ user.first_name }}</h2>
+        <h3>Logged in as {{ user.email }}</h3>
+        <ul>
+            <li>Name : {{ user.first_name}}</li>
+        </ul>
+        <a href="/logout">Log Off</a>
+    </body>
+</html>

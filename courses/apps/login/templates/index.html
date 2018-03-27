@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Registrate</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <h1>Courses?</h1>
+        <p>A new world awaits you...</p>
+        <hr>
+            {% if messages %}
+			    <ul class="messages">
+    		    {% for message in messages %}
+    			    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    		    {% endfor %}
+             </ul>
+            {% endif %}
+        <div id="register">
+            <h2>Register!</h2>
+            <h3>For a whole lot of nothing</h3>
+            <form action="/registration" method="post">
+            {% csrf_token %}
+            <input type="text" name="first_name" id="first_name"> First Name
+            <br>
+            <input type="text" name="last_name" id="last_name"> Last Name
+            <br>
+            <input type="email" name="email" id="email"> Email
+            <br>
+            <input type="password" name="password" id="password"> Password
+            <br>
+            <input type="password" name="cpassword" id="cpassword"> Confirm Password
+            <br>
+            <input type="submit" value="Register">
+            </form>
+        </div>
+        <div id="login">
+            <h2>Login</h2>
+            <h3>Already have an account full of nothing?</h3>
+            <form action="/login" method="post">
+             {% csrf_token %}
+                <input type="email" name="email" id="email"> Email
+                <br>
+                <input type="password" name="password" id="password">Password
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </body>
+</html>

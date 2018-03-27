@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Courses| Create</title>
+    </head>
+    <body>
+        <h2>Create</h2>
+        {% if messages %}
+			    <ul class="messages">
+    		    {% for message in messages %}
+    			    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    		    {% endfor %}
+             </ul>
+        {% endif %}
+        <form action="/{{ user.id }}/courses/creating" method="post">
+                {% csrf_token %}
+            Course Name:
+            <br>
+            <input type="text" name="name" id="name">
+            <br>
+            Description:
+            <br>
+            <textarea name="description" id="description"></textarea>
+            <br>
+            <input type="submit" value="Create">
+        </form>
+        <a href="/{{ user.id }}/courses">Cancel</a>
+        <br>
+        <a href="/{{ user.id }}">Home</a>
+    </body>
+</html>
